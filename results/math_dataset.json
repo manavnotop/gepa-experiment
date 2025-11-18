@@ -1,0 +1,37 @@
+[
+  {
+    "difficulty": "medium",
+    "topic": "geometry",
+    "problem": "A triangle has two sides of lengths 8 cm and 15 cm. The angle between these two sides is 60 degrees. Calculate the area of the triangle.",
+    "solution": "To find the area of the triangle, we can use the formula:\n\nArea = 0.5 * a * b * sin(C),\n\nwhere 'a' and 'b' are the lengths of the two sides, and 'C' is the included angle between them.\n\nHere, a = 8 cm, b = 15 cm, and C = 60 degrees.\n\n1. Convert the angle from degrees to radians only if necessary, but since the trigonometric sine function can handle degrees, we can use it directly here.\n2. Calculate sin(60 degrees):\n   sin(60 degrees) = \u221a3/2.\n\n3. Substitute the values into the area formula:\n   Area = 0.5 * 8 cm * 15 cm * (\u221a3/2)\n\n   = 0.5 * 120 cm\u00b2 * (\u221a3/2)\n\n   = 60 cm\u00b2 * (\u221a3/2) \n\n   = 30\u221a3 cm\u00b2.\n\n4. Calculate the approximate value of \u221a3:\n   \u221a3 \u2248 1.732.\n\n5. Multiply:\n   Area \u2248 30 * 1.732 cm\u00b2\n   \u2248 51.96 cm\u00b2.",
+    "final_answer": "30\u221a3 cm\u00b2 or approximately 51.96 cm\u00b2."
+  },
+  {
+    "difficulty": "hard",
+    "topic": "geometry",
+    "problem": "In triangle ABC, angle A measures 60 degrees, angle B measures 70 degrees, and side a (opposite angle A) measures 10 cm. Calculate the length of side c (opposite angle C) using the Law of Sines.",
+    "solution": "1. First, we need to find angle C. We know that the angles in a triangle sum to 180 degrees:\n   \\[ C = 180\u00b0 - A - B \\]\n   \\[ C = 180\u00b0 - 60\u00b0 - 70\u00b0 = 50\u00b0 \\]\n\n2. Next, we will use the Law of Sines to find the length of side c. The Law of Sines states that:\n   \\[ \\frac{a}{\\sin(A)} = \\frac{b}{\\sin(B)} = \\frac{c}{\\sin(C)} \\]\n   Therefore,\n   \\[ \\frac{a}{\\sin(A)} = \\frac{c}{\\sin(C)} \\]\n\n3. We can rearrange this to find c:\n   \\[ c = a \\cdot \\frac{\\sin(C)}{\\sin(A)} \\]\n\n4. Now we substitute the known values:\n   - \\( a = 10 \\text{ cm} \\)\n   - \\( C = 50\u00b0 \\)\n   - \\( A = 60\u00b0 \\)\n\n   Calculate \\( \\sin(50\u00b0) \\) and \\( \\sin(60\u00b0) \\):\n   \\[ \\sin(50\u00b0) \\approx 0.766 \\, \\text{ and } \\sin(60\u00b0) = \\frac{\\sqrt{3}}{2} \\approx 0.866 \\]\n\n5. Substitute these values into the equation:\n   \\[ c = 10 \\cdot \\frac{0.766}{0.866} \\]\n   \\[ c \\approx 10 \\cdot 0.884 = 8.84 \\, \\text{ cm} \\]\n\nThus, the length of side c is approximately 8.84 cm.",
+    "final_answer": "8.84"
+  },
+  {
+    "difficulty": "easy",
+    "topic": "probability",
+    "problem": "A bag contains 3 red balls and 2 blue balls. What is the probability of picking a red ball from the bag?",
+    "solution": "1. Count the total number of balls in the bag. \\n   - Total red balls = 3 \\n   - Total blue balls = 2 \\n   - Total balls = 3 + 2 = 5. \\n\\n2. Determine the number of favorable outcomes for picking a red ball. \\n   - Favorable outcomes (red balls) = 3. \\n\\n3. Use the probability formula: \\n   \\( P(A) = \\frac{\\text{Number of favorable outcomes}}{\\text{Total number of outcomes}} \\) \\n   - Here, \\( P(\\text{red ball}) = \\frac{3}{5} \\). \\n\\n4. Simplify the probability, if necessary: \\n   - The fraction \\( \\frac{3}{5} \\) is already in simplest form. \\n\\nThus, the probability of picking a red ball is \\( \\frac{3}{5} \\).",
+    "final_answer": "0.6"
+  },
+  {
+    "difficulty": "easy",
+    "topic": "trigonometry",
+    "problem": "What is the sine of a 30-degree angle?",
+    "solution": "1. Recall the sine function definition: In a right triangle, the sine of an angle is the ratio of the length of the opposite side to the length of the hypotenuse. \n\n2. For basic angles, we can use the known sine values: \n   - sin(0 degrees) = 0 \n   - sin(30 degrees) = 1/2 \n   - sin(45 degrees) = \u221a2/2 \n   - sin(60 degrees) = \u221a3/2 \n   - sin(90 degrees) = 1\n\n3. Since 30 degrees is a common angle in trigonometry, we directly know that sin(30 degrees) = 1/2.\n\n4. Therefore, the sine of a 30-degree angle is 1/2.",
+    "final_answer": "0.5"
+  },
+  {
+    "difficulty": "easy",
+    "topic": "probability",
+    "problem": "A bag contains 3 red balls and 2 blue balls. What is the probability of drawing a red ball from the bag?",
+    "solution": "1. First, determine the total number of balls in the bag.\\n   - Number of red balls = 3\\n   - Number of blue balls = 2\\n   - Total number of balls = 3 (red) + 2 (blue) = 5 balls.\\n\\n2. Next, identify the number of favorable outcomes for drawing a red ball, which is the number of red balls.\\n   - Favorable outcomes (red balls) = 3.\\n\\n3. Use the formula for probability:  \\n   - Probability = (Number of favorable outcomes) / (Total number of outcomes)\\n   - Probability of drawing a red ball = 3 (favorable outcomes) / 5 (total outcomes) = 3/5.\\n\\n4. Therefore, the probability of drawing a red ball is 3/5.",
+    "final_answer": "0.6"
+  }
+]
