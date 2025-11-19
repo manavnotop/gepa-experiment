@@ -1,5 +1,6 @@
 """
 Evaluation: Compare baseline vs GEPA datasets using an LLM grader
+Supports sophisticated dataset format with problem types and subtopics
 """
 
 import json
@@ -18,6 +19,7 @@ class EvaluationResult(BaseModel):
     reasoning_score: float
     structure_score: float
     final_answer_score: float
+    sophistication_score: float
     feedback: str
 
 
@@ -27,14 +29,25 @@ class EvaluationResult(BaseModel):
 class MathEvaluator(curator.LLM):
     response_format = EvaluationResult
     system_prompt = (
-        "You are a strict math dataset evaluator. "
-        "Given a math problem, its solution, and final answer, "
-        "you must grade the quality using numerical scores."
+        "You are a strict math dataset evaluator for sophisticated mathematical problems. "
+        "Evaluate the problem based on its depth, real-world context, connection to multiple mathematical concepts, "
+        "solution clarity, and final answer accuracy. Provide numerical scores for each aspect."
     )
 
     def prompt(self, sample):
+        # Handle both old and new format datasets
+        problem_type = sample.get("problem_type", "calculation")
+        subtopics = sample.get("subtopics", [sample.get("topic", "unknown")])
+        difficulty = sample.get("difficulty", "unknown")
+        topic = sample.get("topic", "unknown")
+
         return f"""
 Evaluate the following generated math example:
+
+Difficulty: {difficulty}
+Topic: {topic}
+Problem Type: {problem_type}
+Subtopics: {', '.join(subtopics)}
 
 Problem:
 {sample["problem"]}
@@ -47,12 +60,13 @@ Final Answer:
 
 Score each STRICTLY between 0 and 1:
 
-- reasoning_score: depth, clarity, correctness of steps
+- reasoning_score: depth, clarity, correctness of mathematical steps
 - structure_score: formatting, step-by-step flow, readability
 - final_answer_score: correctness & presence of final answer
+- sophistication_score: complexity, real-world context, multi-concept integration
 
 Then output:
-- score = average of three scores
+- score = average of four scores
 - feedback = one paragraph explaining strengths & weaknesses
         """
 
@@ -107,5 +121,5 @@ def stats(scores, key="score"):
 
 
 print("\n=== RESULTS SUMMARY ===")
-print("Baseline:',", stats(baseline_scores))
+print("Baseline:", stats(baseline_scores))
 print("GEPA:", stats(gepa_scores))

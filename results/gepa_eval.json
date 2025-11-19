@@ -1,37 +1,402 @@
 [
   {
-    "score": 0.83,
-    "reasoning_score": 0.85,
-    "structure_score": 0.8,
-    "final_answer_score": 0.85,
-    "feedback": "The reasoning is clear and correct, effectively showing the powers of 3 modulo 10, identifying the necessary condition for divisibility by 10, and correctly summing the values of n. However, the structural flow could improve; explicitly stating assumptions about the range of n or clarifying the choice of limits would enhance readability. The final answer is accurate, and overall the solution is well-articulated."
+    "score": 0.575,
+    "reasoning_score": 0.6,
+    "structure_score": 0.7,
+    "final_answer_score": 0.5,
+    "sophistication_score": 0.4,
+    "feedback": "The solution provides a reasonably clear application of the binomial probability formula, which is appropriate for the problem context. However, there are several miscalculations and unclear representations, particularly in the final answer where the result appears significantly higher than mathematically expected. The explanation jumps too quickly into calculations without reinforcing underlying concepts. Additionally, while the probability context is relatable, improvements in the clarity of mathematical reasoning and correct calculations would enhance the overall quality of the response."
   },
   {
-    "score": 0.9166666666666666,
+    "score": 0.775,
+    "reasoning_score": 0.7,
+    "structure_score": 0.8,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.6,
+    "feedback": "The reasoning in the solution is generally clear, outlining the weight and distance considerations methodically. However, the tracking of combinations was somewhat unclear, and the conclusion about the minimum distance contained errors, particularly in tracking the scenarios. The structure has a good step-by-step layout, but there were some redundancies in explanations. The problem integrates real-world logistical challenges well, although overall complexity could be improved by exploring more nuanced combinations or constraints."
+  },
+  {
+    "score": 0.975,
+    "reasoning_score": 1.0,
+    "structure_score": 1.0,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.9,
+    "feedback": "The solution demonstrates a clear and logical step-by-step process for calculating the total arrangements of teams, effectively applying combinatorial principles. The reasoning is solid, with accurate use of the binomial coefficient throughout, leading to a correct final answer. The structure is well-organized, making it easy to follow. However, while the problem integrates multiple combinatorial concepts, the application could be perceived as straightforward without delving into more complex implications of the arrangements or considerations in a real-world context, which could have showcased greater sophistication."
+  },
+  {
+    "score": 0.85,
+    "reasoning_score": 0.9,
+    "structure_score": 0.8,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.7,
+    "feedback": "The solution demonstrates a clear understanding of the mathematical concepts involved in linear combinations and effectively solves the system of equations step-by-step. The explanation is thorough and breaks down the problem into manageable parts, aiding clarity. However, the context of the production problem could have been more explicitly connected to the mathematical process, which would have increased the sophistication score. Overall, the provided answer is correct and well-structured."
+  },
+  {
+    "score": 0.86,
     "reasoning_score": 0.9,
     "structure_score": 0.85,
     "final_answer_score": 1.0,
-    "feedback": "The solution effectively uses the Law of Sines to determine the length of side b in triangle ABC. Each step is logically presented, and the mathematical manipulations are clear and mostly correct. The only minor issue is a slight lack of clarity in the transitions between algebraic steps, which could be improved for better readability. However, the final answer is accurate and well-formatted, demonstrating a solid understanding of the problem. Overall, this is a strong response with a minor area for improvement in step clarity."
+    "sophistication_score": 0.9,
+    "feedback": "The solution demonstrates a comprehensive and correct mathematical approach to solving the problem, clearly outlining each step in the proof. The use of algebraic manipulation is effectively presented, and the final answer is correct, as it clearly states the width of the path. However, there is a slight lack of clarity in the initial explanation of the proof's geometric reasoning which could be improved for a deeper understanding. Structurally, the formatting is mostly clean, though some polishing in presentation could enhance readability."
   },
   {
-    "score": 0.7,
+    "score": 0.95,
+    "reasoning_score": 0.95,
+    "structure_score": 0.9,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.95,
+    "feedback": "The solution demonstrates strong reasoning with clear, correct mathematical steps throughout the calculation. Each transition from the differential equation to the height calculation is logical and reflects a solid understanding of differential equations. The structure is well-organized, following a clear step-by-step format that enhances readability. However, minor formatting issues, such as a missing multiplication sign and some inconsistent spacing, could have been improved for better clarity. Overall, the complexity of the problem is well managed, showcasing real-world application in fluid dynamics, which adds to its sophistication."
+  },
+  {
+    "score": 0.55,
     "reasoning_score": 0.6,
+    "structure_score": 0.7,
+    "final_answer_score": 0.5,
+    "sophistication_score": 0.4,
+    "feedback": "The solution correctly identifies the variables and profit function and outlines the constraints. However, it miscalculates (100,60) as a feasible point due to the production time constraint not allowing for more than 80 desks when all production time is accounted for. Also, it fails to clarify the maximum feasible solutions thoroughly. While the structure is mostly clear and includes a reasonable flow, there are some errors in identifying points of intersection and the final calculations. More careful handling of the constraints would improve the overall quality."
+  },
+  {
+    "score": 0.75,
+    "reasoning_score": 0.7,
+    "structure_score": 0.8,
+    "final_answer_score": 0.8,
+    "sophistication_score": 0.6,
+    "feedback": "The solution demonstrates clear reasoning and provides a logical progression of mathematical steps to derive the area of the path based on the uniform width added to the garden. However, some calculations appear slightly off, particularly during the differentiation process. Structurally, the formatting and step-by-step flow are generally strong, but there are minor readability issues that could benefit from clarification or reformatting for better flow. The final answer is clearly stated, but it would be improved by explicitly stating how maximum area calculations at the critical points and endpoints are derived or verified."
+  },
+  {
+    "score": 0.65,
+    "reasoning_score": 0.6,
+    "structure_score": 0.7,
+    "final_answer_score": 0.7,
+    "sophistication_score": 0.6,
+    "feedback": "The proof makes a commendable attempt at applying modular arithmetic to evaluate the expression n^2 + n + 1 for different cases of n modulo 3. However, the incorrect assertion that n^2 + n + 1 is 0 (mod 3) when n \u2261 1 (mod 3) introduces a major flaw in reasoning, as this would imply divisibility by 3, contradicting the proof's goal. Additionally, while the structure is generally clear, the conclusion hints at a verification step that is not fully laid out, leading to a lack of confidence in the final result. Improved attention to detail and clearer articulation of cases would enhance the proof significantly."
+  },
+  {
+    "score": 0.9,
+    "reasoning_score": 0.9,
+    "structure_score": 0.9,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.8,
+    "feedback": "The solution provides a clear and accurate step-by-step approach to calculate the minimum lifespan of the light bulbs using the properties of the normal distribution. The reasoning is well-structured and easy to understand, correctly employing the z-score for the 5th percentile. The rounding of the final answer to a whole number is appropriate given the context. However, while the application of number theory is effectively demonstrated, the sophistication could be improved by discussing implications or practical considerations of the guaranteed lifespan beyond the calculation."
+  },
+  {
+    "score": 0.95,
+    "reasoning_score": 0.9,
+    "structure_score": 0.95,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.9,
+    "feedback": "The solution clearly identifies and counts the prime numbers between 1 and 30, demonstrating a solid understanding of the topic. The reasoning steps are clear and follow a logical flow, which enhances readability. The presentation is organized well, and each step builds effectively toward the final conclusion. While the problem is straightforward, it may benefit from additional contextual information or complexity to elevate its sophistication. Overall, it is a well-executed example of number theory with a high level of clarity and correctness."
+  },
+  {
+    "score": 0.9,
+    "reasoning_score": 0.9,
+    "structure_score": 0.9,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.8,
+    "feedback": "The generated math example effectively applies the concept of combinations with repetition to solve the problem. The reasoning is clear, and the mathematical steps are correctly executed, leading to a valid final answer of 35. The structure is well-organized, with appropriate formatting that enhances readability. However, the sophistication could be improved by including a brief explanation of the combinatorial concept for those less familiar, enhancing the real-world relevance of the problem. Overall, this is a strong example with only minor areas for improvement."
+  },
+  {
+    "score": 0.885,
+    "reasoning_score": 0.9,
+    "structure_score": 0.8,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.85,
+    "feedback": "The generated problem demonstrates a solid understanding of the application of trigonometric principles to solve a practical issue regarding angles of elevation. The reasoning is clear, with well-defined mathematical steps that are correct and easy to follow. The notation used for tangent and arctangent is appropriate, although a brief explanation of what 'arctan' signifies might enhance clarity for readers less familiar with the topic. The structure is mostly organized and readable, but slight improvements in visual formatting (like adding spaces between equations) could enhance legibility. The integration of real-world context adds sophistication, presenting a relatable scenario that demands a multi-step solution."
+  },
+  {
+    "score": 0.835,
+    "reasoning_score": 0.9,
+    "structure_score": 0.8,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.85,
+    "feedback": "The math example demonstrates a strong understanding of probability concepts and effectively applies the union formula to solve the problem. The reasoning is clear, with accurate calculations and logical steps throughout. However, while most sections are well-structured, there are minor issues with formatting that could enhance readability, such as clearer separation of calculations. The problem integrates multiple concepts well and presents a realistic scenario, but it could have included more details on overlapping visitor behavior for further depth."
+  },
+  {
+    "score": 0.95,
+    "reasoning_score": 1.0,
+    "structure_score": 0.9,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.9,
+    "feedback": "The solution provides a clear and correct mathematical explanation for finding the expected value and variance of the lifetime of light bulbs modeled by an exponential distribution. The reasoning is thorough, demonstrating a solid understanding of calculus concepts such as integration by parts, which is appropriate for expert-level work. The overall structure is logical and well-formatted, making it easy to follow. However, it missed the opportunity to include more insight into the implications of the results or any practical applications of these calculations, which would have added sophistication to the answer."
+  },
+  {
+    "score": 0.8575,
+    "reasoning_score": 0.9,
+    "structure_score": 0.8,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.8,
+    "feedback": "The solution demonstrates a strong grasp of number theory principles and logical reasoning in calculating price increments based on bead usage. The mathematical steps are clear and accurate, ensuring that anyone can follow the logic. The structure is mostly good, with a logical flow and clear distinctions for each bracelet's calculation; however, the inclusion of more headings or bullet points could improve readability. The problem incorporates a real-world context effectively, making it relatable, but adding complexity through additional variables could enhance sophistication."
+  },
+  {
+    "score": 0.85,
+    "reasoning_score": 0.9,
+    "structure_score": 0.9,
+    "final_answer_score": 0.9,
+    "sophistication_score": 0.8,
+    "feedback": "The solution demonstrates a solid understanding of calculus concepts and effectively uses the volume formula for a cylinder to calculate the needed water volume. The steps are clear and logically sequenced, enhancing readability. However, a minor error occurred in the final numerical computation: the calculation of the time to fill the tank was inaccurately approximated. The absence of clarity in rounding \u03c0 could also be enhanced by treating it more rigorously for a precise decimal output. Overall, it integrates real-world context well with engineering applications."
+  },
+  {
+    "score": 0.925,
+    "reasoning_score": 0.9,
+    "structure_score": 0.9,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.95,
+    "feedback": "The solution demonstrates a clear and detailed thought process, breaking down the problem into manageable steps while correctly deriving the profit functions for both Project A and Project B. The calculations are accurate, leading to a correct final answer of $17,500, which is presented clearly. However, the reasoning could include more context about the implications of assuming zero fixed costs, which would enhance the sophistication of the response. Overall, the structure is well-organized and easy to follow."
+  },
+  {
+    "score": 0.8875,
+    "reasoning_score": 0.9,
+    "structure_score": 0.85,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.8,
+    "feedback": "The reasoning in the solution is clear and logically correct, as it accurately follows the steps necessary to solve the differential equation, leading to the correct value of k. The use of separation of variables and the application of initial conditions are well executed. The structure is mostly organized; however, some steps could be further clarified by explicitly showing the transition from the logarithmic form to the exponentiation. The final answer is correctly provided and calculated. The problem's sophistication is moderate, as it involves a differential equation and the application of initial conditions, but it could benefit from discussing the implications of the drainage rate in a real-world context."
+  },
+  {
+    "score": 0.8,
+    "reasoning_score": 0.7,
+    "structure_score": 0.9,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.8,
+    "feedback": "The solution provided effectively addresses the word problem through a clear step-by-step approach, incorporating algebraic expressions and equations. The reasoning is mostly correct; however, there is an error in step 5 where the calculation leads to incorrect values. The structure is well-organized with clear labels for each equation, making it easy to follow. The final answer is presented correctly, reflecting the problem's requirements. The complexity is suitable for an advanced level, as it incorporates real-world concepts in a meaningful way."
+  },
+  {
+    "score": 0.85,
+    "reasoning_score": 0.9,
+    "structure_score": 0.8,
+    "final_answer_score": 0.9,
+    "sophistication_score": 0.75,
+    "feedback": "The provided solution effectively uses separation of variables and partial fractions to solve the differential equation, demonstrating a clear understanding of the topic. The reasoning is sound, and the mathematical steps are mostly correct and detailed. However, the integration step could be presented more clearly, and the explanation could benefit from more concise phrasing in certain areas. The final result is accurate, but the context of time units could be better specified to enhance the practical relevance of the answer. Overall, a very good solution with minor areas for improvement."
+  },
+  {
+    "score": 0.8,
+    "reasoning_score": 0.75,
+    "structure_score": 0.85,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.75,
+    "feedback": "The solution demonstrates a solid understanding of trigonometric principles and effectively applies them to the problem, showcasing the ability to break down the scenario into manageable calculations. The steps are generally clear and logically proceed from one to the next, which aids in readability. However, while the reasoning is sound, it could be strengthened by explicitly calculating the height of the hill before combining it with the tower's height, providing a fuller understanding of the situation. Overall, the final answer is correct, but further attention to the details of the hill's height could add to the sophistication of the solution."
+  },
+  {
+    "score": 0.95,
+    "reasoning_score": 1.0,
+    "structure_score": 1.0,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.8,
+    "feedback": "This problem is well-structured and the solution is clearly laid out. The reasoning is thorough, demonstrating a clear understanding of how to set up and solve the problem. Each step is logically followed with clear explanations and correct mathematical operations. The final answer is explicitly stated and is accurate. The only area for slight improvement could be in adding a bit more real-world context or complexity, perhaps by discussing the implications of reaching the break-even point or considering fluctuating sales. However, overall, this example effectively handles the application of algebra in a practical scenario."
+  },
+  {
+    "score": 0.85,
+    "reasoning_score": 0.8,
+    "structure_score": 0.9,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.7,
+    "feedback": "The solution presents a clear and logical approach to proving the maximum machine usage while adhering to the constraints set by the problem. The reasoning is generally strong, with correct mathematical steps taken to manipulate and solve the equations. However, the explanation could benefit from more depth in discussing the implications of the solution in a real-world context, which would enhance its sophistication. The factors contributing to the constraints and potential impacts of failing those limits could also be discussed more thoroughly. Overall, the structure is well organized and easy to follow, making it accessible to the reader."
+  },
+  {
+    "score": 0.85,
+    "reasoning_score": 0.8,
+    "structure_score": 0.9,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.8,
+    "feedback": "The solution effectively walks through the mathematical logic needed to solve the problem, with clarity in the calculations for the height of the triangular face, area of the base, and volume of the prism. The steps are logically sequenced and use relevant formulas correctly. However, there is a slight error in the calculation of the height of the triangle; the explanation should clarify that for a 30-60-90 triangle, the opposite side to the 60-degree angle is indeed 'b' (12m), leading to the correct height calculation. The volume is calculated correctly, and the final answer is presented clearly. Overall, the solution is well-structured but could benefit from minor corrections and additional clarity on triangle properties."
+  },
+  {
+    "score": 0.9,
+    "reasoning_score": 0.9,
+    "structure_score": 0.9,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.8,
+    "feedback": "The solution clearly presents the reasoning behind each step, demonstrating a thorough understanding of both perimeter calculations and algebra. The use of step-by-step formatting aids in readability and clarity, which is essential in mathematical proofs. The figures given (width and length) are accurate, and the verification of the final answer strengthens the overall proof. However, there could be a slight improvement in sophistication by integrating additional concepts or real-world applications, though it is appropriate for a beginner-level problem."
+  },
+  {
+    "score": 0.5,
+    "reasoning_score": 0.6,
+    "structure_score": 0.7,
+    "final_answer_score": 0.5,
+    "sophistication_score": 0.6,
+    "feedback": "The solution presents a clear understanding of how to set up a linear programming problem with constraints, though it contains some inaccuracies in the final calculations and does not effectively use the intersection points. The reasoning is somewhat convoluted and could be more straightforward, with clearer connections between steps. Additionally, the conclusion about the maximum revenue and suggested production numbers was not derived correctly from the optimized equation solutions, which impacts the reliability of the final answer. Improving clarity and ensuring the accuracy of mathematical solutions would strengthen the overall analysis."
+  },
+  {
+    "score": 0.95,
+    "reasoning_score": 0.95,
+    "structure_score": 0.9,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.95,
+    "feedback": "The solution demonstrates a clear understanding of algebraic concepts, correctly determining the dimensions of the garden and the volume of soil required. The reasoning is precise and follows logical mathematical steps, leading to accurate calculations. The structure is generally strong, but could benefit from slightly better formatting to enhance readability, such as clearer separation of each step. Overall, the problem incorporates real-world applications effectively, showcasing the integration of multiple mathematical concepts in a sophisticated manner."
+  },
+  {
+    "score": 0.88,
+    "reasoning_score": 0.9,
+    "structure_score": 0.85,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.85,
+    "feedback": "The solution effectively demonstrates a clear understanding of the concepts involved in calculating the lengths of triangular sides and applying unit costs to derive a total expense for the materials. The reasoning steps are well-organized and follow a logical progression, allowing readers to easily follow the calculations. However, the presentation could benefit from slightly improved formatting for readability, such as clearer separation between calculations and costs, and some minor numerical inaccuracies in the distance approximations could be polished for greater precision. Overall, it presents a solid mix of mathematical rigor and practical application."
+  },
+  {
+    "score": 0.95,
+    "reasoning_score": 1.0,
+    "structure_score": 1.0,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.8,
+    "feedback": "The problem is well-structured and clear, effectively using the stars and bars theorem to arrive at the correct answer. Each mathematical step is logically presented, allowing for easy following of the reasoning process. The answer is accurate and includes a detailed explanation of the concepts used. The only minor aspect that could enhance sophistication would be to elaborate slightly more on the applicability of the problem beyond the immediate context, such as discussing variations, further constraints, or potential extensions to real-world scenarios."
+  },
+  {
+    "score": 0.865,
+    "reasoning_score": 0.9,
+    "structure_score": 0.85,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.8,
+    "feedback": "The reasoning is clear, with each step logically linked, making it easy to follow. The calculations are mostly correct, demonstrating a solid understanding of probability concepts. However, a minor area for improvement is providing context or exploring implications of the findings, which would enhance the real-world relevance. The structure is mostly well-organized, but slight improvements in formatting (like clearer separation between steps) could enhance readability."
+  },
+  {
+    "score": 0.85,
+    "reasoning_score": 0.9,
+    "structure_score": 0.8,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.8,
+    "feedback": "The math example demonstrates strong reasoning with clear calculations and adherence to the survey constraints. The systematic approach to determine the number of students to survey and the proportional representation showcases good problem-solving skills. The structure is mostly logical, but could benefit from clearer headings or numbering to guide the reader through each step. The final answer is correct, complete, and well presented. Overall, it effectively integrates multiple concepts and provides a practical application of algebra in a real-world scenario."
+  },
+  {
+    "score": 0.87,
+    "reasoning_score": 0.85,
+    "structure_score": 0.9,
+    "final_answer_score": 0.9,
+    "sophistication_score": 0.85,
+    "feedback": "The solution demonstrates a good depth of reasoning with clear mathematical steps in calculating the hexagon's area, the radius of the circular garden, and subsequently the area after subtracting the garden. Each step is logically connected, showcasing clear flow and readability. However, there was a slight error in the calculation of the radius of the circular garden; correctly, it should have been R = 5\u221a3 - 2, which is approximately 6.66 m, however, it should have been clarified that 5\u221a3 is about 8.66 and thus this radius should be verified as the radius should be less than this. The complexity of integrating geometry concepts is appropriate for an expert question, although it could expand on real-world implications further."
+  },
+  {
+    "score": 0.725,
+    "reasoning_score": 0.7,
     "structure_score": 0.8,
     "final_answer_score": 0.7,
-    "feedback": "The solution shows a reasonable application of the Gaussian elimination method but has notable inaccuracies in calculations and clarity. The initial setup and the progression through row operations are mostly clear, but the arithmetic steps especially in substituting values back are incorrect, leading to false values for x, y, and z. There are also some minor formatting issues, such as missing correct alignment of equations. A more careful review of calculations and better clarity in the steps would improve the overall accuracy and readability."
+    "sophistication_score": 0.7,
+    "feedback": "The mathematical reasoning is sound, as the solution correctly applies geometric principles to find the area of both the larger and smaller triangles. However, the final answer lacks clarity, as it misstates the relationship between the areas of the triangles regarding the quarter-area claim. The step-by-step structure is logically laid out and easy to follow, but there's room for improvement in emphasizing final conclusions with greater clarity. The context of the problem is well-developed within the real-world application of architecture and sustainability."
+  },
+  {
+    "score": 0.9625,
+    "reasoning_score": 0.95,
+    "structure_score": 0.9,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.9,
+    "feedback": "The solution demonstrates a clear understanding of combinatorial principles applied to a real-world scenario, effectively considering the constraints of the problem. Each case is systematically delineated with appropriate calculations for combinations, leading to a correct final result. The structure is logical and well-organized, making it easy to follow. However, a minor improvement could be made in providing a brief summary statement for each case to enhance clarity, particularly for readers less familiar with combinatorial topics."
+  },
+  {
+    "score": 0.8,
+    "reasoning_score": 0.7,
+    "structure_score": 0.8,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.7,
+    "feedback": "The solution demonstrates a solid understanding of optimization within a real-world context, specifically related to cost and revenue in a logistics scenario. The reasoning is mostly clear and follows the mathematical processes appropriately, although there are minor inaccuracies regarding the interpretation of the derivative, leading to an unnecessary conclusion about minimizing trucks. The structure is good, with a logical flow and clear labels for each step, enhancing readability. However, the complexity could be enhanced by further exploring constraints on the number of trucks and potential impacts of fixed costs versus variable costs."
+  },
+  {
+    "score": 0.95,
+    "reasoning_score": 0.95,
+    "structure_score": 0.95,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.9,
+    "feedback": "The reasoning in the solution is well-structured and mathematically sound, demonstrating a clear understanding of the application problem within number theory. The steps for deriving the relationship between the number of acres planted with corn and soybeans are effectively communicated, and the calculations of possible yields are thorough. The final answer is accurate and presents the maximum yield along with the correct ratio. The solution integrates multiple concepts seamlessly, highlighting the strategic allocation of resources. However, some minor improvements in the explanation of the mathematical process could enhance clarity for those less familiar with algebraic manipulation."
+  },
+  {
+    "score": 0.9,
+    "reasoning_score": 0.9,
+    "structure_score": 0.8,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.9,
+    "feedback": "The solution demonstrates solid reasoning and clarity throughout the mathematical steps, effectively applying combinatorial principles. The process used to compute the number of ways to select items from each category is correctly articulated, ensuring an accurate understanding of the binomial coefficients and the inclusion-exclusion principle. However, while the structure is overall coherent, the work could benefit from clearer formatting that differentiates calculations from explanations, enhancing readability. The complexity of the problem is addressed intelligently, integrating multiple concepts in combinatorics effectively. The final answer is presented correctly, reinforcing the overall strength of the solution."
+  },
+  {
+    "score": 0.83,
+    "reasoning_score": 0.9,
+    "structure_score": 0.8,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.7,
+    "feedback": "The solution demonstrates a solid understanding of combinatorial principles, especially through the use of inclusion-exclusion and recognizing the restrictions posed by themes. The reasoning is clear, leading to the accurate deduction that no invalid scenarios exist in this context. However, the explanation regarding the theme distribution could have been more robust, as the assumption of the even distribution isn't directly justified. Structurally, the steps were logically ordered, yet minor improvements in formatting could enhance readability. Overall, the final answer is correct and well-justified."
+  },
+  {
+    "score": 0.9,
+    "reasoning_score": 0.9,
+    "structure_score": 0.9,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.9,
+    "feedback": "The solution provides a clear and logical reasoning process for formulating constraints from a real-world scenario involving resource allocation. The use of graphical representation to validate the feasibility of production is effective, and the mathematical rigor is strong throughout. The problem is well-structured with clear steps, leading to a concise final answer. A minor improvement could be to include explicit plotting of the feasible region for better clarity, especially in an expert-level context."
+  },
+  {
+    "score": 0.95,
+    "reasoning_score": 1.0,
+    "structure_score": 1.0,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.8,
+    "feedback": "The generated math problem is well-structured and clearly presented, with each step logically following from the previous one. The reasoning is straightforward and correct, allowing for easy understanding and verification of the solution. The format of representing variables and using standard mathematical notation enhances readability. The problem integrates basic algebra and geometry concepts appropriately; however, the overall sophistication could be improved by involving more complex parameters or by introducing constraints that require deeper analysis. Still, it effectively serves its purpose as a beginner-level application problem."
   },
   {
     "score": 0.7,
     "reasoning_score": 0.6,
     "structure_score": 0.8,
     "final_answer_score": 0.8,
-    "feedback": "The solution shows a good structure and flow, making it easy to follow the elimination method. However, there are inaccuracies in the calculations leading to incorrect approximations of the values of x and y, as well as a rounding error that affects correctness. The reasoning behind the elimination was clear, but it could have detailed intermediate steps in checking the solution or confirming the final values. Additionally, considering how to format the equations for clarity would also enhance the readability."
+    "sophistication_score": 0.7,
+    "feedback": "The solution demonstrates a good understanding of basic number theory concepts, particularly prime factorization. The method for calculating points from prime factors is laid out clearly, although some steps could benefit from more rigorous mathematical justification (e.g., how the total number of combinations is derived). Structure and flow are generally good, but the overall exposition could be refined for better clarity and conciseness. The final answer is presented correctly with specified maximum points and unique combinations, although the reasoning behind the number of combinations could have been expanded upon for deeper understanding."
   },
   {
-    "score": 0.8666666666666666,
+    "score": 0.9,
+    "reasoning_score": 0.9,
+    "structure_score": 0.9,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.8,
+    "feedback": "The solution demonstrates strong reasoning and clarity, correctly utilizing combinatorial principles to find the number of unique groupings. The steps are well-structured and easy to follow, enhancing readability. The final answer is accurate and clearly presented. However, the sophistication could be improved by incorporating a bit more depth or context about combinatorial strategies or alternate methods to solve such problems. Overall, this is a well-crafted example that successfully meets the problem's requirements."
+  },
+  {
+    "score": 0.9,
+    "reasoning_score": 0.9,
+    "structure_score": 0.9,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.8,
+    "feedback": "The solution demonstrates strong reasoning skills, with clear mathematical steps and logical conclusions drawn from the constraints and objective function. The clarity and correctness in formulating the problem and interpreting the constraints are commendable. The structured approach, from defining variables to finding intersections and testing vertices, enhances readability and comprehension. However, while the complexity is appropriate for an advanced problem, further integration of real-world relevance or implications of the solution could elevate the sophistication score. Overall, it successfully presents a robust solution to the linear programming problem."
+  },
+  {
+    "score": 0.85,
     "reasoning_score": 0.9,
     "structure_score": 0.8,
-    "final_answer_score": 0.8666666666666666,
-    "feedback": "The solution is well-structured and follows a clear step-by-step approach to calculate the probability of selecting a red ball. The reasoning is strong, as it sufficiently covers the calculation process, including the identification of total and favorable outcomes. However, the final answer is presented in decimal form (0.6) rather than the fraction 3/5, which is traditionally used in probability problems. This discrepancy may confuse readers who expect the final answer to align with the earlier calculations. Overall, the solution is correct and informative but could be improved by including the final probability in its fraction form."
+    "final_answer_score": 0.9,
+    "sophistication_score": 0.8,
+    "feedback": "The problem is well-structured and presents a clear mathematical reasoning process for calculating the combinations of feature voting. The use of combinations is appropriate, and the solution logically steps through the necessary calculations. However, there could be some improvement in explaining the context of people voting for combinations and clarifying the independence of their choices in a more detailed manner. Nevertheless, the final answer is correctly calculated, and the transition to addressing the scale of the number (386^200) is insightful, giving practical sense to the result."
+  },
+  {
+    "score": 0.9,
+    "reasoning_score": 0.9,
+    "structure_score": 0.9,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.8,
+    "feedback": "The solution effectively outlines the problem and provides a clear step-by-step analysis of how to maximize profit given the constraints. The reasoning is sound with accurate mathematical steps, leading to a correct conclusion. However, the sophistication could be improved by discussing potential implications of the results or introducing more complexity into the situation, such as considering varying profit margins or costs associated with scaling production."
+  },
+  {
+    "score": 0.9,
+    "reasoning_score": 0.95,
+    "structure_score": 0.9,
+    "final_answer_score": 0.9,
+    "sophistication_score": 0.85,
+    "feedback": "The solution is well-structured and follows a clear, logical progression through the steps of defining revenue and cost, forming the profit function, and applying calculus to find the maximum. Each step is clearly articulated, making it easy to follow. Mathematically, the calculations are accurate and lead to a correct understanding of the profit's behavior at the critical point. However, while the negative profit indicates a potential area for improvement, it could be stressed further to emphasize how businesses might adapt their strategies in real scenarios based on these results. Additionally, some formatting inconsistencies (like spacing in equations) could have slightly affected readability."
+  },
+  {
+    "score": 0.93,
+    "reasoning_score": 0.95,
+    "structure_score": 0.9,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.9,
+    "feedback": "The generated math example exhibits a high level of clarity in its reasoning and correctness, leading to accurate calculations for probabilities using Bayes' theorem. The structure is well-organized, facilitating easy comprehension of the steps taken to solve the problem. The use of relevant real-world context enhances its sophistication, allowing for a more engaging word problem. However, while the depth of explanation is impressive, minor improvements could be made in formatting for a more polished presentation. Overall, it demonstrates strong mathematical reasoning, sophisticated integration of concepts, and provides correct final answers clearly."
+  },
+  {
+    "score": 0.9375,
+    "reasoning_score": 1.0,
+    "structure_score": 1.0,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.75,
+    "feedback": "The generated math example effectively presents a beginner-level application problem in geometry, with clear reasoning and correct mathematical calculations. Each step is logically sequenced, enhancing readability and clarity. The area calculations for both the rectangle and the circle are accurate, and the final answer is correctly derived and expressed. However, the sophistication score is slightly lower due to the straightforwardness of the problem; while it effectively integrates concepts of area and geometric shapes, it could have been enhanced by introducing additional real-world considerations or a slightly more complex scenario."
+  },
+  {
+    "score": 0.95,
+    "reasoning_score": 0.9,
+    "structure_score": 1.0,
+    "final_answer_score": 1.0,
+    "sophistication_score": 0.9,
+    "feedback": "The solution to the word problem is well-structured and follows a clear, step-by-step format, making it easy to follow. The mathematical reasoning is sound, with all calculations correctly executed and confirmed through verification of the perimeter. The algebraic expressions used to define the relationships between width and length are accurate and appropriately integrated. However, the solution could include a brief explanation on why maximizing the area is beneficial for a garden, adding a layer of real-world context and sophistication."
   }
 ]

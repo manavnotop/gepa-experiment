@@ -1,6 +1,6 @@
 """
-Minimal: Curator + GEPA (Working Version)
-Generates math problems using a GEPA-optimized system prompt
+Sophisticated: Curator + GEPA (Enhanced Version)
+Generates math problems using a GEPA-optimized system prompt with better configuration
 """
 
 import json
@@ -21,30 +21,44 @@ class MathProblem(BaseModel):
     final_answer: str = Field(description="Final numerical answer")
 
 
+# Create more diverse training and validation sets
 trainset = [
-    {"input": {"difficulty": "high school", "topic": "algebra"}},
-    {"input": {"difficulty": "college", "topic": "calculus"}},
-    {"input": {"difficulty": "middle school", "topic": "arithmetic"}},
-    {"input": {"difficulty": "high school", "topic": "trigonometry"}},
-    {"input": {"difficulty": "college", "topic": "linear algebra"}},
+    {"input": {"difficulty": "intermediate", "topic": "algebra", "problem_type": "word problem"}},
+    {"input": {"difficulty": "advanced", "topic": "calculus", "problem_type": "optimization"}},
+    {"input": {"difficulty": "intermediate", "topic": "probability", "problem_type": "application problem"}},
+    {"input": {"difficulty": "advanced", "topic": "linear algebra", "problem_type": "theoretical problem"}},
+    {"input": {"difficulty": "beginner", "topic": "geometry", "problem_type": "calculation"}},
+    {"input": {"difficulty": "expert", "topic": "combinatorics", "problem_type": "logic puzzle"}},
+    {"input": {"difficulty": "intermediate", "topic": "trigonometry", "problem_type": "application problem"}},
+    {"input": {"difficulty": "advanced", "topic": "differential equations", "problem_type": "calculation"}},
 ]
 
 valset = [
-    {"input": {"difficulty": "high school", "topic": "geometry"}},
-    {"input": {"difficulty": "college", "topic": "probability"}},
-    {"input": {"difficulty": "high school", "topic": "statistics"}},
+    {"input": {"difficulty": "advanced", "topic": "geometry", "problem_type": "proof"}},
+    {"input": {"difficulty": "intermediate", "topic": "statistics", "problem_type": "application problem"}},
+    {"input": {"difficulty": "expert", "topic": "number theory", "problem_type": "theoretical problem"}},
+    {"input": {"difficulty": "beginner", "topic": "algebra", "problem_type": "calculation"}},
 ]
 
 seed_prompt = {
     "system_prompt": (
-        "Generate a math problem with:\n"
-        "- Clear problem statement\n"
-        "- Step-by-step solution\n"
-        "- Final answer in the format '### <answer>'"
+        "You are a precise and creative math problem generator. You MUST respond in the following Pydantic format:\n"
+        "{\n"
+        '  "problem": "Clear problem statement",\n'
+        '  "solution": "Step-by-step solution",\n'
+        '  "final_answer": "Final numerical or symbolic answer",\n'
+        '  "problem_type": "Type of math problem",\n'
+        '  "difficulty": "Difficulty level",\n'
+        '  "topic": "Main math topic",\n'
+        '  "subtopics": ["List", "of", "subtopics"]\n'
+        "}\n\n"
+        "Generate problems that require multi-step reasoning, incorporate real-world contexts where possible, "
+        "and connect multiple mathematical concepts. Provide a clear step-by-step solution with explanations, "
+        "a final numerical answer, and specify the problem type and subtopics involved."
     )
 }
 
-print("Running GEPA optimization (custom metric)...")
+print("Running GEPA optimization with enhanced configuration...")
 
 
 class MathQualityAdapter(DefaultAdapter):
@@ -67,8 +81,11 @@ class MathQualityAdapter(DefaultAdapter):
             # Convert input dict to user message
             input_dict = data.get("input", {})
             user_content = (
-                f"Generate a {input_dict.get('difficulty', '')} level math problem "
-                f"about {input_dict.get('topic', '')}."
+                f"Generate a sophisticated {input_dict.get('difficulty', '')} level math problem "
+                f"primarily about {input_dict.get('topic', '')} but potentially incorporating other mathematical concepts. "
+                f"The problem should be of type '{input_dict.get('problem_type', '')}' and involve real-world context when possible. "
+                f"Provide a clear step-by-step solution with explanations and the final numerical answer. "
+                f"Also specify the main problem type and any subtopics involved."
             )
 
             messages = [
@@ -120,46 +137,68 @@ class MathQualityAdapter(DefaultAdapter):
             output = {"full_assistant_response": assistant_response}
             outputs.append(output)
 
-            # Calculate quality score with more nuanced criteria
+            # Calculate quality score with more nuanced criteria for sophisticated problems
             text = assistant_response.lower()
             score = 0.0
 
-            # 1. Problem statement quality (0.3 points)
-            # Check for actual problem structure, not just keyword
-            if "?" in text or "problem" in text or "solve" in text or "find" in text:
-                # Check if it's a real problem (has numbers or variables)
-                if re.search(r"\d+|[a-z]\s*[=+\-*/]", text):
-                    score += 0.3
+            # 1. Problem sophistication (0.25 points)
+            # Check for multi-step reasoning, real-world context, interdisciplinary elements
+            sophistication_indicators = [
+                r"real.*world",
+                r"application",
+                r"context",
+                r"model.*situation",
+                r"scenario",
+                r"word problem",
+                r"find.*given",
+            ]
+            if any(re.search(pattern, text, re.IGNORECASE) for pattern in sophistication_indicators):
+                score += 0.15
+            # Check for complex problem structure
+            if re.search(r"[a-z]\s*[=+\-*/]\s*[a-z]|[a-z]\s*[=+\-*/]\s*\d+", text):
+                score += 0.10
 
-            # 2. Step-by-step solution quality (0.4 points)
-            # More strict: need actual numbered steps or clear step indicators
+            # 2. Solution depth and reasoning (0.3 points)
+            # Look for detailed explanations and multiple approaches
             step_patterns = [
                 r"step\s*\d+",
                 r"\d+\.\s+[^.]{20,}",  # Numbered list with substantial content
-                r"first[^.]{10,}second[^.]{10,}",  # Sequential indicators
+                r"first.*then|initially.*finally",
                 r"solution:",
+                r"explanation:",
             ]
-            if any(re.search(pattern, text) for pattern in step_patterns):
+            if any(re.search(pattern, text, re.IGNORECASE) for pattern in step_patterns):
                 # Check if steps have mathematical content
-                if re.search(r"[=+\-*/]|\d+", text):
-                    score += 0.4
+                if re.search(r"(?<!\d)\d+(?!\d)|[a-z]\s*[=+\-*/]", text):
+                    score += 0.3
 
-            # 3. Final answer quality (0.3 points)
-            # Prefer the exact format requested
-            if "###" in assistant_response:  # Check original case for ###
-                score += 0.3
-            elif "final answer" in text or "answer:" in text or "answer is" in text:
-                # Partial credit if format is close
+            # 3. Problem statement quality (0.2 points)
+            # Check for clear problem formulation
+            if "?" in text or re.search(r"(solve|find|calculate|determine|prove)\s+", text):
+                if re.search(r"\d+|[a-z]\s*[=+\-*/]", text):
+                    score += 0.2
+
+            # 4. Final answer clarity (0.15 points)
+            if "final answer" in text or "answer:" in text or re.search(r"###\s*\S", assistant_response):
                 score += 0.15
+            elif "=" in text and re.search(r"\d+|[a-z]+", text):
+                score += 0.08
 
-            # Bonus: Structure and clarity (0.1 points)
-            # Check for good formatting/organization
-            if len(assistant_response.split("\n")) >= 3:  # Has some structure
+            # 5. Subtopic identification (0.1 points) - bonus for recognizing multiple concepts
+            # This is harder to evaluate from text alone, but look for indicators of multiple math areas
+            multiple_concept_indicators = [
+                "and.*algebra", "and.*geometry", "and.*calculus",
+                "statistics.*probability", "algebra.*geometry", "trig.*geometry",
+                "applied.*math", "multi.*step", "combined.*concepts"
+            ]
+            if any(re.search(pattern, text, re.IGNORECASE) for pattern in multiple_concept_indicators):
                 score += 0.1
 
             # Penalty: If response is too short or seems incomplete
-            if len(assistant_response) < 50:
-                score *= 0.5  # Halve the score for very short responses
+            if len(assistant_response) < 80:
+                score *= 0.6  # Reduce score for very short responses
+            elif len(assistant_response) < 120:
+                score *= 0.8  # Reduce score for short responses
 
             scores.append(min(score, 1.0))  # Cap at 1.0
 
@@ -204,30 +243,31 @@ class MathQualityAdapter(DefaultAdapter):
             generated_outputs = traj["full_assistant_response"]
             input_dict = data.get("input", {})
 
-            # Create feedback based on score (updated thresholds for new scoring)
+            # Create feedback based on score (updated thresholds for sophisticated scoring)
             if score >= 0.8:
                 feedback = (
-                    "The generated response is high quality. It includes a clear problem statement with "
-                    "mathematical content, well-structured step-by-step solution, and properly formatted final answer."
+                    "The generated response is high quality. It includes a sophisticated problem statement with "
+                    "real-world context, multi-step reasoning, well-structured solution with explanations, "
+                    "and properly formatted final answer. The problem connects multiple mathematical concepts."
                 )
-            elif score >= 0.5:
+            elif score >= 0.6:
                 feedback = (
-                    "The generated response is moderate quality. It includes some required elements "
-                    "but could be improved. Ensure it has: (1) a clear problem statement with numbers/variables, "
-                    "(2) numbered steps or clear sequential solution steps with mathematical operations, "
-                    "(3) final answer in the format '### <answer>'."
+                    "The generated response is moderate to good quality. It includes most required elements "
+                    "but could be improved. Ensure it has: (1) a sophisticated problem statement with real-world context, "
+                    "(2) detailed step-by-step solution with mathematical operations and explanations, "
+                    "(3) clearly formatted final answer. Consider connecting multiple mathematical concepts."
                 )
             else:
                 feedback = (
-                    "The generated response is low quality. It is missing key elements or lacks proper structure. "
-                    "The response must include: (1) a problem statement with mathematical content (numbers/variables), "
-                    "(2) a step-by-step solution with numbered steps or clear sequential indicators, "
-                    "(3) a final answer clearly marked with '### <answer>'. The response should also be well-formatted "
-                    "with multiple lines for clarity."
+                    "The generated response is low quality. It is missing key elements or lacks proper sophistication. "
+                    "The response must include: (1) a sophisticated problem statement with multi-step reasoning and "
+                    "real-world context, (2) a detailed solution with numbered steps and mathematical operations, "
+                    "(3) a clearly formatted final answer. The problem should connect multiple mathematical concepts "
+                    "and demonstrate complex reasoning."
                 )
 
             record: dict[str, Any] = {
-                "Inputs": f"Difficulty: {input_dict.get('difficulty', '')}, Topic: {input_dict.get('topic', '')}",
+                "Inputs": f"Difficulty: {input_dict.get('difficulty', '')}, Topic: {input_dict.get('topic', '')}, Problem Type: {input_dict.get('problem_type', '')}",
                 "Generated Outputs": generated_outputs,
                 "Feedback": feedback,
             }
@@ -242,7 +282,8 @@ class MathQualityAdapter(DefaultAdapter):
         return ret_d
 
 
-print("Running GEPA optimization...")
+# Enhanced GEPA configuration with better parameters
+print("Running GEPA optimization with enhanced configuration...")
 
 gepa_result = gepa.optimize(
     seed_candidate=seed_prompt,
@@ -251,7 +292,7 @@ gepa_result = gepa.optimize(
     task_lm=None,
     reflection_lm="openai/gpt-4o-mini",
     adapter=MathQualityAdapter(model="openai/gpt-4o-mini"),
-    max_metric_calls=10,
+    max_metric_calls=25,  # Increased for better optimization
 )
 
 optimized_prompt = gepa_result.best_candidate["system_prompt"]
@@ -269,21 +310,29 @@ class MathProblemGeneratorGEPA(curator.LLM):
     def prompt(self, input: Dict) -> str:
         return (
             f"{self.optimized_prompt}\n\n"
-            f"Task: Generate a {input['difficulty']} level math problem "
-            f"about {input['topic']}."
+            f"Task: Generate a sophisticated {input['difficulty']} level math problem "
+            f"primarily about {input['topic']} but potentially incorporating other mathematical concepts. "
+            f"The problem should be of type '{input['problem_type']}' and involve real-world context when possible. "
+            f"Provide a clear step-by-step solution with explanations and the final numerical answer. "
+            f"Also specify the problem type ({input['problem_type']}), difficulty ({input['difficulty']}), "
+            f"main topic ({input['topic']}), and any subtopics involved as part of your response. "
+            f"Format your response with clear sections for the problem statement, solution steps, and final answer."
         )
 
     def parse(self, input: Dict, response: MathProblem) -> Dict:
         return {
             "difficulty": input["difficulty"],
             "topic": input["topic"],
+            "subtopics": [input["topic"]],  # Default to main topic as subtopic
+            "problem_type": input["problem_type"],
             "problem": response.problem,
             "solution": response.solution,
             "final_answer": response.final_answer,
         }
 
 
-difficulties = ["easy", "medium", "hard"]
+# Use the same enhanced lists as the baseline
+difficulties = ["beginner", "intermediate", "advanced", "expert"]
 topics = [
     "algebra",
     "geometry",
@@ -292,11 +341,28 @@ topics = [
     "trigonometry",
     "number theory",
     "linear algebra",
+    "statistics",
+    "combinatorics",
+    "differential equations"
+]
+
+problem_types = [
+    "word problem",
+    "proof",
+    "calculation",
+    "optimization",
+    "logic puzzle",
+    "application problem",
+    "theoretical problem"
 ]
 
 inputs: List[Dict] = [
-    {"difficulty": random.choice(difficulties), "topic": random.choice(topics)}
-    for _ in range(5)
+    {
+        "difficulty": random.choice(difficulties),
+        "topic": random.choice(topics),
+        "problem_type": random.choice(problem_types)
+    }
+    for _ in range(50)  # Match the baseline sample size
 ]
 
 
@@ -304,10 +370,27 @@ generator = MathProblemGeneratorGEPA(
     optimized_prompt=optimized_prompt, model_name="gpt-4o-mini", batch=False
 )
 
-print("Generating GEPA-optimized math problems...")
+print("Generating sophisticated GEPA-optimized math problems...")
 dataset = generator(inputs)
 
-output_data = dataset.dataset.to_pandas().to_dict("records")
+# Convert to pandas and then to JSON-serializable format
+df = dataset.dataset.to_pandas()
+
+# Convert any non-serializable objects to strings or regular Python types
+output_data = []
+for _, row in df.iterrows():
+    record = {}
+    for col in df.columns:
+        val = row[col]
+        # Convert numpy types and other non-serializable types to regular Python types
+        if hasattr(val, 'item'):  # numpy scalars
+            record[col] = val.item()
+        elif isinstance(val, (list, tuple)):
+            # Handle lists/tuples with potential numpy elements
+            record[col] = [v.item() if hasattr(v, 'item') else v for v in val]
+        else:
+            record[col] = val
+    output_data.append(record)
 
 # Save to results folder
 current_dir = Path(__file__).parent.parent  # Go up to project root
@@ -316,8 +399,8 @@ results_dir.mkdir(exist_ok=True)  # Create results folder if it doesn't exist
 output_path = results_dir / "math_dataset_gepa.json"
 
 with open(output_path, "w") as f:
-    json.dump(output_data, f, indent=2)
+    json.dump(output_data, f, indent=2, default=str)  # Use default=str as backup
 
 print(f"\nSaved dataset to: {output_path}")
-print(f"Generated {len(output_data)} problems.")
+print(f"Generated {len(output_data)} sophisticated problems.")
 print(json.dumps(output_data[0], indent=2))
