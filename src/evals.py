@@ -4,6 +4,7 @@ Supports sophisticated dataset format with problem types and subtopics
 """
 
 import json
+import re
 import statistics
 from pathlib import Path
 
@@ -47,7 +48,7 @@ Evaluate the following generated math example:
 Difficulty: {difficulty}
 Topic: {topic}
 Problem Type: {problem_type}
-Subtopics: {', '.join(subtopics)}
+Subtopics: {", ".join(subtopics)}
 
 Problem:
 {sample["problem"]}
@@ -86,6 +87,23 @@ baseline_data = json.load(open(baseline_path))
 gepa_data = json.load(open(gepa_path))
 
 
+def strict_score(sample):
+    txt = (sample["problem"] + " " + sample["solution"]).lower()
+    nums = set(re.findall(r"\d+(?:\.\d+)?", txt))
+    ref = re.search(
+        r"\b(?:doi\.org/10\.\d{4,}/\S+|isbn\s*[:–-]?\s*[\d\-xX]+|pubmed\.ncbi\.nlm\.nih\.gov/\d+|arxiv\.org/abs/\d+(?:\.\d+)?)\b",
+        txt,
+        re.I,
+    )
+    return 1.0 if len(nums) >= 3 and ref else 0.0
+
+
+baseline_strict = statistics.mean(strict_score(s) for s in baseline_data)
+gepa_strict = statistics.mean(strict_score(s) for s in gepa_data)
+
+print("\n=== RULE-BASED (GEPA training signal) ===")
+print("Baseline pass-rate:", baseline_strict)
+print("GEPA pass-rate:    ", gepa_strict)
 # ---------------------------------------------------------
 # 4. Run evaluation
 # ---------------------------------------------------------

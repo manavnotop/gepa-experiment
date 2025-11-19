@@ -13,28 +13,30 @@ from pydantic import BaseModel, Field
 
 
 class MathProblem(BaseModel):
-    problem: str = Field(description="A math problem")
+    problem: str = Field(description="A 3-hop word problem")
     solution: str = Field(description="Step-by-step solution")
-    final_answer: str = Field(description="Final numerical answer")
+    final_answer: str
+    reference: str = Field(
+        description="A real URL/DOI/ISBN that supports the key numeric fact"
+    )
 
 
 class MathProblemGenerator(curator.LLM):
     response_format = MathProblem
     system_prompt = (
-        "You are a precise and creative math problem generator. Generate problems that require multi-step reasoning, "
-        "incorporate real-world contexts where possible, and connect multiple mathematical concepts. "
-        "Provide a clear step-by-step solution with explanations and a final numerical answer."
+        "You are a picky math professor who hates textbook fluff. "
+        "Every problem you create MUST chain three distinct numeric facts and cite the exact "
+        "textbook/paper URL/DOI/ISBN that contains the key number. "
+        "If you cannot locate a real reference, return nothing."
     )
 
     def prompt(self, input: Dict) -> str:
         return (
-            f"Generate a sophisticated {input['difficulty']} level math problem "
-            f"primarily about {input['topic']} but potentially incorporating other mathematical concepts. "
-            f"The problem should be of type '{input['problem_type']}' and involve real-world context when possible. "
-            f"Provide a clear step-by-step solution with explanations and the final numerical answer. "
-            f"Also specify the problem type ({input['problem_type']}), difficulty ({input['difficulty']}), "
-            f"main topic ({input['topic']}), and any subtopics involved as part of your response. "
-            f"Format your response with clear sections for the problem statement, solution steps, and final answer."
+            f"Create one {input['difficulty']} {input['problem_type']} that "
+            f"combines at least THREE separate numeric ideas from {input['topic']}. "
+            f"State the problem, solve it step-by-step, give the final number, "
+            f"and supply the real reference that holds the critical value. "
+            f"No made-up numbers, no fake URLs."
         )
 
     def parse(self, input: Dict, response: MathProblem) -> Dict:
@@ -46,6 +48,7 @@ class MathProblemGenerator(curator.LLM):
             "problem": response.problem,
             "solution": response.solution,
             "final_answer": response.final_answer,
+            "reference": response.reference,
         }
 
 
@@ -61,7 +64,7 @@ topics = [
     "linear algebra",
     "statistics",
     "combinatorics",
-    "differential equations"
+    "differential equations",
 ]
 
 problem_types = [
@@ -71,18 +74,20 @@ problem_types = [
     "optimization",
     "logic puzzle",
     "application problem",
-    "theoretical problem"
+    "theoretical problem",
 ]
 
 inputs: List[Dict] = []
 
 # Generate more diverse and sophisticated samples
-for _ in range(50):  # Increase sample size
-    inputs.append({
-        "difficulty": random.choice(difficulties),
-        "topic": random.choice(topics),
-        "problem_type": random.choice(problem_types)
-    })
+for _ in range(100):  # Increase sample size
+    inputs.append(
+        {
+            "difficulty": random.choice(difficulties),
+            "topic": random.choice(topics),
+            "problem_type": random.choice(problem_types),
+        }
+    )
 
 
 generator = MathProblemGenerator(model_name="gpt-4o-mini", batch=False)
@@ -100,11 +105,11 @@ for _, row in df.iterrows():
     for col in df.columns:
         val = row[col]
         # Convert numpy types and other non-serializable types to regular Python types
-        if hasattr(val, 'item'):  # numpy scalars
+        if hasattr(val, "item"):  # numpy scalars
             record[col] = val.item()
         elif isinstance(val, (list, tuple)):
             # Handle lists/tuples with potential numpy elements
-            record[col] = [v.item() if hasattr(v, 'item') else v for v in val]
+            record[col] = [v.item() if hasattr(v, "item") else v for v in val]
         else:
             record[col] = val
     output_data.append(record)
